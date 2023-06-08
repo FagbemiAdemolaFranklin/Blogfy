@@ -146,14 +146,18 @@ async function main(){
             const deleteBlog = req.body.delete;
             console.log(deleteBlog)
             const user = req.session.passport.user.username;
-            if(!user) {
-                res.redirect("/login")
-            }else if(deleteBlog) {
+            
+            if (deleteBlog) {
                 await User.findOneAndUpdate({username:user}, {$pull:{"contents":{_id:deleteBlog}}})
-                res.redirect("/secrets");  
+                .then(function() {
+                    res.redirect("/secrets");  
+                }).catch(err => {
+                    console.log(err)
+                    res.redirect("/login");
+                })
+                
             }
-        }catch(err){
-            console.log(err)
+        }catch{
             res.redirect("/login")
         }
     })
