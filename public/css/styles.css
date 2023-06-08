@@ -640,7 +640,7 @@ body{
 }
 
 .create-form-container{
-  width: 100%;
+  width: 95%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -649,7 +649,7 @@ body{
 }
 
 .create-form-container-inputs{
-  width: 80%;
+  width: fit-content;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -701,8 +701,8 @@ body{
 
 
 .create-form-container-input{
-  width: 90%;
-  height: 40px;
+  width: fit-content;
+  height: fit-content;
   border: 2px solid #3C486B;
   border-radius: 20px;
   padding-left:20px ;
