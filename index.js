@@ -34,13 +34,17 @@ async function main(){
     await mongoose.connect(process.env.MONGO_URI);
   }catch(error){
     console.log(error);
+    await mongoose.connect(process.env.MONGO_URI);
   }
  
   
   const userSchema = new mongoose.Schema ({
     email:String,
     password:String,
-    contents:[Object]
+    contents:[{
+        title:String,
+        content:String
+    }]
   });
 
   userSchema.plugin(passportLocalMongoose);
@@ -129,23 +133,48 @@ async function main(){
             await User.find({username:user}).then(function(foundUsers){ 
                 var blogs = foundUsers[0].contents;
                 res.render("secrets", {usersWithSecrets:blogs});
-            }).catch(err => console.log(err));
+            }).catch(err => {
+                console.log(err);
+            })
         }catch{
-            console,log(error);
-            res.redirect("/secrets");
+            res.redirect("/login");
         }
     });
+
+    app.post("/secrets", async function(req, res) {
+        const deleteBlog = req.body.delete;
+        try{
+            console.log(deleteBlog)
+            const user = req.session.passport.user.username;
+            if(!user) {
+                res.redirect("/login")
+            }else if(deleteBlog) {
+                await User.findOneAndUpdate({username:user}, {$pull:{"contents":{_id:deleteBlog}}}).then(function(){
+                    res.redirect("/secrets");
+                }).catch(err => {
+                    console.log(err)
+                    response.redirect("/login");
+                })
+                
+            }
+        }catch(err) {
+            console.log(err);
+            res.redirect("/login")
+        }
+    })
 
     app.get("/submit", async function(req, res){
         try{
             if (req.isAuthenticated()){
                 res.render("submit");
-                } else {
+            }else{
+                res.writeHead(401,{'Content-Type': 'text/plain'}).end("Unauthorized");
+                console.log(err)
                 res.redirect("/login");
-                }
-        }catch{
-            console.log(error);
-            res.redirect("/submit");
+            }
+        }catch(err){
+            console.log(err);
+            res.redirect("/login");
         }
         
     });
@@ -159,31 +188,31 @@ async function main(){
                 title:submittedTitle,
                 content:submittedContent
             }
-            await User.findOneAndUpdate({username:req.session.passport.user.username}, {$push:{"contents":blog}}).then(function(done){
+            await User.findOneAndUpdate({username:req.session.passport.user.username}, {$push:{"contents":blog}}).then(function(){
                 res.redirect("/secrets");
-            }).catch(err => console.log(err));
+            }).catch(err =>{
+                res.writeHead(401,{
+                    'Content-Type': 'text/plain'}).end("Unauthorized");
+                console.log(err)
+                res.redirect("/login");
+            });
+            
         }catch{
-            console.log(error);
-            res.redirect("/submit");
+            res.redirect("/login");
         }
         
     }) 
 
     app.get("/logout", async function(req, res){
+        req.logout(function(err){
+            if(err){
+                console.log(err);
+                express.response.redirect("/")
+            }else{
+                res.redirect("/");
+            }
+        });
         
-        try{
-            req.logout(function(err){
-                if(err){
-                    console.log(err);
-                }else{
-                    res.redirect("/");
-                }
-            });
-        }catch{
-            console.log(error);
-            
-
-        }  
     });
 
     app.post("/register", async function(req, res){
@@ -223,7 +252,7 @@ async function main(){
                     passport.authenticate("local", {failureRedirect:"/login", failureFlash:true})(req, res, function(err){
                         if(err){
                             const body = "username or password is incorrect"
-                            response
+                            res
                             .writeHead(401, {
                                 'Content-Length': Buffer.byteLength(body),
                                 'Content-Type': 'text/plain'
