@@ -621,10 +621,12 @@ body{
 
 .create-full-container{
   height: 90%;
-  width: 80%;
+  width: 85%;
   border: 1px solid;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #F6F1E9;
   position: relative;
   animation: backInUp;
@@ -633,8 +635,7 @@ body{
 
 .create-blog{
   height: 85%;
-  width: 98%;
-  padding: 2%;
+  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
