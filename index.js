@@ -142,23 +142,18 @@ async function main(){
     });
 
     app.post("/secrets", async function(req, res) {
-        const deleteBlog = req.body.delete;
         try{
+            const deleteBlog = req.body.delete;
             console.log(deleteBlog)
             const user = req.session.passport.user.username;
             if(!user) {
                 res.redirect("/login")
             }else if(deleteBlog) {
-                await User.findOneAndUpdate({username:user}, {$pull:{"contents":{_id:deleteBlog}}}).then(function(){
-                    res.redirect("/secrets");
-                }).catch(err => {
-                    console.log(err)
-                    response.redirect("/login");
-                })
-                
+                await User.findOneAndUpdate({username:user}, {$pull:{"contents":{_id:deleteBlog}}})
+                res.redirect("/secrets");  
             }
-        }catch(err) {
-            console.log(err);
+        }catch(err){
+            console.log(err)
             res.redirect("/login")
         }
     })
@@ -207,7 +202,7 @@ async function main(){
         req.logout(function(err){
             if(err){
                 console.log(err);
-                express.response.redirect("/")
+                response.redirect("/")
             }else{
                 res.redirect("/");
             }
