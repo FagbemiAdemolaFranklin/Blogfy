@@ -428,11 +428,12 @@ body{
     flex-direction:row;
     justify-content: center;
     border: none;
+    color: black;
     
   }
 
   .google-button a{
-    color: white;
+    color: rgb(0, 0, 0);
   }
   .form-group{
     border: none;
