@@ -152,6 +152,7 @@ body{
 
 .articles:hover{
   transform: scale(0.9);
+  box-shadow: 2px 2px black;
 }
 
 .articles-author {
@@ -395,7 +396,7 @@ body{
 
   .first-container{
     width: 100%;
-    height: fit-content;
+    height: 90%;
     display: flex;
     flex-direction: column;
     padding-left: 0px;
@@ -404,14 +405,14 @@ body{
 
   .second-container{
     width: 100%;
-    height: fit-content;
+    height: 10%;
     display: flex;
     justify-content: flex-start;
     border: none;
   }
 
   .google{
-    height: fit-content;
+    height: 100%;
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -421,7 +422,7 @@ body{
   }
 
   .google-button{
-    height: fit-content;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction:row;
@@ -541,7 +542,7 @@ body{
   width: 80%;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content:center;
   gap: 25px;
   
 }
