@@ -330,7 +330,7 @@ body{
   padding-left: 5px;
   padding-right: 5px;
   height: 18%;
-  width: 100%;
+  width: 70%;
 }
 
 .google-button:hover{
@@ -377,17 +377,16 @@ body{
 @media screen and (max-width:800px) {
   .register-container{
     width: 70%;
-    height: 63%;
+    height: 62%;
     display: flex;
     flex-direction: column;
-    
     padding: 20px;
     
   }
 
   .login-container{
     width: 70%;
-    height: 55%;
+    height: 52%;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -413,7 +412,7 @@ body{
 
   .google{
     height: fit-content;
-    width: 100%;
+    width: 70%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -448,7 +447,7 @@ body{
     width: 100%;
     border-radius: 20px;
     color: white;
-    border: none;
+    padding: 5px;
     background-color: rgb(58, 58, 181);
   }
 
@@ -472,6 +471,7 @@ body{
   width: 75%;
   display: flex;
   flex-direction: column;
+  gap: 20px;
   background-color:  #FFE5CA;
   padding: 30px;
   position: relative;
@@ -480,26 +480,30 @@ body{
 }
 
 .nav-bars{
-  height: 15%;
+  height: 20%;
   width: 100%;
   display: flex;
-  justify-content:space-between;
+  justify-content:center;
+  align-items: end;
+}
+
+.nav-bar-buttons {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .nav-bar-buttons a {
-  margin-right: 80px;
   text-decoration: none;
   color: #0B2447;
   font-weight: 500;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.back-button {
-  margin-left: 20px;
-}
 .articles-container{
-  height: 85%;
+  height: 80%;
   width: 100%;
   background-color:#FFE5CA;
   display: flex;
@@ -508,7 +512,10 @@ body{
 
 .articles-text{
   height: 20%;
-  width: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
 }
 
 .articles-text h2 {
@@ -517,10 +524,6 @@ body{
   font-weight: 400;
 }
 
-
-
-
-
 .articles-inner-container{
   height: 80%;
   width: 100%;
@@ -528,44 +531,32 @@ body{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: space-between;
+  justify-content: center;
+  align-content: center;
 }
 
 .blogs-container{
   height: 100%;
   padding-top: 20px;
-  width: 100%;
+  width: 80%;
   display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 25px;
+  
 }
 
 .blogs-inner-container{
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content:space-evenly;
   flex-wrap:wrap;
-  gap: 15px;
-  
+  gap: 15px;  
 }
 
 .blogs-personal-container {
   display: flex;
   flex-direction:column;
-}
-
-
-
-.blogs-personal-container p {
-  width: 200px;
-  height: 120px;
-  border: 1px solid #0B2447;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: white;
-  transition: all.2s ease-in-out;
-  overflow: hidden;
 }
 
 .blogs-personal-container h5 {
@@ -574,13 +565,7 @@ body{
   font-size: 15px;
 }
 
-.blogs-personal-container p:hover{
-  transform:scale(1.1);
-}
 
-.blogs-personal-container p:focus {
-  overflow: visible;
-}
 
 .text-box {
   padding: 10px;
@@ -593,7 +578,7 @@ body{
 }
 .write-article-button {
   display: flex;
-  justify-content:right ;
+  justify-content:right;
   align-self: self-end;
   text-align: center;
 }
@@ -620,7 +605,7 @@ body{
 
 
 .create-full-container{
-  height: 90%;
+  height: 80%;
   width: 85%;
   border: 1px solid;
   display: flex;
@@ -628,11 +613,10 @@ body{
   justify-content: center;
   align-items: center;
   background-color: #F6F1E9;
-  
 }
 
 .create-blog{
-  height: fit-content;
+  height: 75%;
   width: 95%;
   display: flex;
   justify-content: center;
@@ -648,19 +632,20 @@ body{
 
 }
 
-.create-form-container-inputs{
-  width: fit-content;
-  height: 100%;
+.create-form-container form {
+  width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  
+  gap: 5px;
 }
 
+
+
 .create-form-container-input-text{
+  width: 90%;
   height: 150px;
-  border-radius: 20px;
-  border: 2px solid #3C486B;
+  border-radius: 5px;
+  border-bottom: 2px solid #3C486B;
   padding: 15px;
   font-size: 20px;
 }
@@ -675,8 +660,7 @@ body{
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 80px;
-  margin-left: 20px;
+  margin-top: 70px;
 }
 
 .submit-button {
@@ -700,11 +684,15 @@ body{
 }
 
 
+
 .create-form-container-input{
-  width: fit-content;
+  width: 90%;
   height: fit-content;
-  border: 2px solid #3C486B;
-  border-radius: 20px;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 2px solid #3C486B;
+  border-radius: 5px;
   padding-left:20px ;
   font-size: 20px;
 }
@@ -725,4 +713,9 @@ body{
 
 .delete-button:hover {
   cursor: pointer;
+}
+
+
+.material-icons.md-36 { 
+  font-size: 36px;
 }

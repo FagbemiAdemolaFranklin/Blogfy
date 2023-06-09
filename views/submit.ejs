@@ -21,12 +21,12 @@
 <body class="create-blog-container-body">
   <div class="create-full-container">
     <div class="nav-bars">
-      <a class="back-button" href="/secrets">
-        <i class="material-symbols-outlined">
-          arrow_back
-        </i>
-      </a>
       <div class="nav-bar-buttons">
+        <a class="back-button" href="/secrets">
+          <i class="material-symbols-outlined">
+            arrow_back
+          </i>
+        </a>
         <a  href="/">
           <span class="material-symbols-outlined" >
             home
@@ -41,16 +41,14 @@
     <div class="create-blog">
       <div class="create-form-container">
         <form action="/submit" method="POST">
-          <div class="create-form-container-inputs">
-            <label for="title">Title</label>
-            <input required class="create-form-container-input" type="text" name="title" id="title">
-            <label for="content">Content</label>
-            <textarea type="text" cols="30" placeholder="Max characters 800" maxlength="800" rows="10" name="content" id="content" class="create-form-container-input-text" required></textarea>
-          </div>
+          <label for="title">Title</label>
+          <input required class="create-form-container-input" type="text" name="title" id="title">
+          <label for="content">Content</label>
+          <textarea type="text" cols="30" placeholder="Max characters 800" maxlength="800" rows="10" name="content" id="content" class="create-form-container-input-text" required></textarea>
+    
           <div class="submit-button-container">
             <button type="submit" class="submit-button">Add</button>
           </div>
-          
         </form>
       </div>
     </div>

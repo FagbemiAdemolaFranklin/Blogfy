@@ -158,7 +158,7 @@ async function main(){
                 
             }
         }catch{
-            res.redirect("/login")
+            res.redirect("/login");
         }
     })
 
